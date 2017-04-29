@@ -11,6 +11,7 @@ public static function tableName()
 {
 	return 'users';
 }
+
     /**
      * @inheritdoc
      */
@@ -29,22 +30,25 @@ public static function tableName()
     }
 
     /**
-     * @inheritdoc
+    Получаем пользователя по token
      */
+	 
     public static function findIdentityByAccessToken($token, $type = null)
     {
+		//Сначала пытаемся получить его из кэша и если есть, то создаем модель на основе полученных данных
 		if(($uid = self::getFromCache($token)) !== false)
 		{
 			
 			
 			return self::createNewModel($token, $uid);
-		} else if(($user =  self::findOne(['auth_key'=>$token])) != null){
+		} else if(($user =  self::findOne(['auth_key'=>$token])) != null){ //Если нет, то пишем в кэш для последующего получения
        
 
 		self::storeToCache($token, $user->id);
 		}
 		return  is_null($user) ? null : $user;
     }
+	//Функция создания модели на основе данных из кэша
 	public static function createNewModel($token, $uid)
 	{
 		$model = new self();
