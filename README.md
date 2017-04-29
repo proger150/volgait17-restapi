@@ -30,7 +30,7 @@ PHP >= 5.4 и MySQL >= 5.7
 Очень важно!!!
 ------------
 
-В проекте не использовался mod_rewrite, поэтому все запросы к серверу должны быть вида http://domain.ru/?r=users/set&key=test_key&val=test_val
+В проекте не использовался mod_rewrite, поэтому все запросы к серверу должны быть вида http://domain.ru/web/?r=users/set&key=test_key&val=test_val
 
 
  
