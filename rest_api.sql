@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 29 2017 г., 12:04
+-- Время создания: Апр 29 2017 г., 13:08
 -- Версия сервера: 5.7.14
 -- Версия PHP: 5.6.25
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- База данных: `rest_api`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `storage`
+--
+
+CREATE TABLE `storage` (
+  `id` int(20) NOT NULL,
+  `data_key` varchar(100) DEFAULT NULL,
+  `data_value` text,
+  `uid` int(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `storage`
+--
+
+INSERT INTO `storage` (`id`, `data_key`, `data_value`, `uid`) VALUES
+(26, 'test', 'test', 1),
+(32, 'test', 'test', 2);
 
 -- --------------------------------------------------------
 
@@ -44,6 +65,12 @@ INSERT INTO `users` (`id`, `auth_key`) VALUES
 --
 
 --
+-- Индексы таблицы `storage`
+--
+ALTER TABLE `storage`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -53,6 +80,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
+--
+-- AUTO_INCREMENT для таблицы `storage`
+--
+ALTER TABLE `storage`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
